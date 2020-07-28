@@ -1,0 +1,25 @@
+
+body {
+    background-color: #efefef;
+}
+
+span.spacing {
+    margin-right: 10px;
+}
+
+input.custom-width {
+    width: 50px;
+}
+
+input.spacing {
+    margin-right: 5px;
+}
+
+h2 {
+    text-align: center
+}
+
+.error {
+    color: red;
+    text-align: center;
+}

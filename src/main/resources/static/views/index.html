@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exchange Rates Provider Compare</title>
+</head>
+
+<body ng-app="exchangeRates">
+
+    <hr/>
+    <div>
+        <h2>Exchange Rates / Provider Comparison</h2>
+    </div>
+    <hr/>
+
+    <div class="container" ng-controller="ExchangeRatesController">
+        <tbody ng-repeat="exchangeRate in bestrates" class="row ">
+        <tr class="row">
+            <td class="col-md-3"><label>Requested Amount</label> <input type="number" placeholder="1.0" step="any" min="0" max="100000000" ng-model="amount" class="input-sm spacing" required/></td>
+            <td class="col-md-3"><label>From</label> <select ng-model="currencyFrom" ng-options="item.code + ' (' + item.name + ')' for item in currencies"></select></td>
+            <td class="col-md-3"><label>To</label> <select ng-model="currencyTo" ng-options="item.code + ' (' + item.name + ')' for item in currencies"></select></td>
+            <td class="col-md-3"><button ng-click="getBestRates()" class="btn btn-sm btn-info">Get Best Exchange Provider</button></td>
+        </tr>
+        </tbody>
+        <hr/>
+
+        <div ng-if="errorMessage">
+            <tr class="error">
+                <td class="col-md-12 info">{{errorMessage}}</td>
+            </tr>
+        </div>
+
+        <div ng-if="bestrates">
+            <table class="table table-hover" style="width:auto">
+                <thead class="row">
+                <tr class="row">
+                    <th class="col-md-4">Provider</th>
+                    <th class="col-md-2">Rate</th>
+                    <th class="col-md-3">Requested Amount</th>
+                    <th class="col-md-3">Exchanged Amount</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="exchangeRate in bestrates" class="row">
+                <tr class="row">
+                    <td class="col-md-4 info">{{exchangeRate.provider}}</td>
+                    <td class="col-md-2 info">{{exchangeRate.value}}</td>
+                    <td class="col-md-3 info">{{exchangeRate.requestedAmount}} {{currencyFrom.code}}</td>
+                    <td class="col-md-3 info">{{exchangeRate.convertedAmount}} {{currencyTo.code}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr/>
+    </div>
+
+    <hr/>
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ExchangeRatesController.js"></script>
+<script src="js/ExchangeRatesService.js"></script>
+<link rel="stylesheet" type="text/css" href="css/app.css"/>
+<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+</html>

@@ -20,7 +20,7 @@
 		<java.version>1.8</java.version>
 		<lombok.version>1.18.12</lombok.version>
 		<commons-lang.version>3.11</commons-lang.version>
-		<commons-collections.version>4.0</commons-collections.version>
+		<commons-collections.version>4.1</commons-collections.version>
 		<assertj-core.version>3.16.1</assertj-core.version>
 	</properties>
 
